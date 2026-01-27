@@ -1,0 +1,41 @@
+name: notebooks-backend
+
+services:
+  nb-backend:
+    build: 
+      context: .
+      target: development
+    ports:
+      - "3000:80"
+    depends_on:
+      - nb-db
+    environment:
+      - PORT=80
+      - MONGO_URI=mongodb://${NB_DB_USER}:${NB_DB_PASSWORD}@nb-db/${NB_DB}
+    develop:
+      watch:
+        - path: ./src
+          action: sync
+          target: /app/src
+    networks:
+      - nb-net
+  nb-db:
+    image: mongodb/mongodb-community-server:7.0-ubuntu2204
+    env_file:
+      - .env
+    volumes:
+      - type: volume
+        source: nb-data
+        target: /data/db
+      - type: bind
+        source: ./db-config/mongo-init.js
+        target: /docker-entrypoint-initdb.d/init-mongo.js
+        read_only: true
+    networks:
+      - nb-net
+
+volumes:
+  nb-data:
+
+networks:
+  nb-net:

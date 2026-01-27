@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: traffic-generator
+  labels:
+    app: traffic-generator
+spec:
+  containers:
+    - name: traffic-generator
+      image: mrzeal025/traffic-gen
+      args:
+        - "color-api-clusterip-svc/color"
+        - "0.5"

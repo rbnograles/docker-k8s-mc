@@ -1,0 +1,1 @@
+console.log('Docker build context index.js file executed.');

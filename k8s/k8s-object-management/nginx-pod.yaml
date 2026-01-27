@@ -1,0 +1,17 @@
+# For documentation, equivalent to the command:
+# kubectl run nginx --image=nginx:1.27.0
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: nginx-pod
+  labels:
+    app: nginx
+  annotations:
+    description: "A simple NGINX pod with resource requests and limits"
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx:1.27.0
+      ports:
+        - containerPort: 80

@@ -1,0 +1,7 @@
+services:
+  nb-backend:
+    networks:
+      - notes-app-net
+  notes-backend:
+    networks:
+      - notes-app-net

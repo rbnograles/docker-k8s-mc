@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: color-backend
+  labels:
+    app: color-api
+    environment: local
+    tier: backend
+spec:
+  containers:
+    - name: color-backend
+      image: mrzeal025/color-api:1.0.0
+      ports:
+        - containerPort: 8080
+
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: color-frontend
+  labels:
+    app: color-api
+    environment: local
+    tier: frontend
+spec:
+  containers:
+    - name: color-frontend
+      image: mrzeal025/color-api:1.0.0
