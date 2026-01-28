@@ -1,1 +1,6 @@
 node_modules/
+**/*.csr
+**/*.key
+**/*.crt
+**/csr.yaml
+**/.DS_Store
