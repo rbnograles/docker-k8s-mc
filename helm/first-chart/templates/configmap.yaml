@@ -15,4 +15,3 @@ data:
   {{ else }}
     allowTesting: "false"
   {{ end }}
-
