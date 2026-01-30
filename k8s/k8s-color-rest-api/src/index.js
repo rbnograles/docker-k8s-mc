@@ -15,5 +15,3 @@ app.listen(port, () => {
 });
 
 export default app;
-
-// Push when ready

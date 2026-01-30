@@ -11,3 +11,10 @@ spec:
       args:
         - "color-api-clusterip-svc/color"
         - "0.5"
+      resources:
+        requests:
+          memory: "64Mi"
+          cpu: "100m"
+        limits:
+          memory: "128Mi"
+          cpu: "250m"
