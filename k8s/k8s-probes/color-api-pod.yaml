@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: color-api-pod
+  labels:
+    app.kubernetes.io/name: color-api-pod
+spec:
+  containers:
+  - name: color-api-pod
+    image: mrzeal025/color-api:1.2.0
+    ports:
+      - containerPort: 80
+    resources:
+      requests:
+        memory: "64Mi"
+        cpu: "250m"
+      limits:
+        memory: "128Mi"
+        cpu: "500m"
+    env:
+      - name: DELAY_STARTUP
+        value: 'true'
+    startupProbe:
+      httpGet:
+        path: /live
+        port: 80
+      failureThreshold: 2
+      periodSeconds: 3
+
